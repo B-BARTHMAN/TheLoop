@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://de4f3i4lxrb7h"]
+
+[ext_resource type="PackedScene" uid="uid://c1q82wxtrbav4" path="res://Player/player.tscn" id="1_2w1kt"]
+[ext_resource type="PackedScene" uid="uid://dllefuwsvhtki" path="res://Room/room.tscn" id="1_yh5la"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yh5la"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yh5la"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_yh5la"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_2w1kt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.05063, 3.77379, -0.222149)
+
+[node name="Room" parent="." instance=ExtResource("1_yh5la")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 0)
+mesh = SubResource("BoxMesh_yh5la")
+
+[node name="Room3" parent="." instance=ExtResource("1_yh5la")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 0)
+mesh = SubResource("SphereMesh_yh5la")
+
+[node name="Room2" parent="." instance=ExtResource("1_yh5la")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.98656, 1.9946, -0.0152321)
+mesh = SubResource("PrismMesh_yh5la")
