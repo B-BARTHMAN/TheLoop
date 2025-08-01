@@ -55,6 +55,7 @@ radius = 0.375
 height = 1.8
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 3
 script = SubResource("GDScript_hvfyp")
 
 [node name="Collision" type="CollisionShape3D" parent="."]

@@ -8,14 +8,19 @@ enum State { BASE, TRIGGER_L, TRIGGER_R }
 
 @onready var __state: State = State.BASE
 
+signal entered_left
+signal entered_right
+
 
 func _on_tp_i(body: Node3D) -> void:
 	if __state == State.TRIGGER_L:
+		entered_left.emit()
 		body.position += left_translation
-		__state == State.BASE
+		__state = State.BASE
 	elif __state == State.TRIGGER_R:
+		entered_right.emit()
 		body.position += right_translation
-		__state == State.BASE
+		__state = State.BASE
 
 
 func _on_tp_o(body: Node3D) -> void:

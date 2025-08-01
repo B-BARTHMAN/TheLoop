@@ -3,33 +3,41 @@
 [ext_resource type="PackedScene" uid="uid://c1q82wxtrbav4" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="PackedScene" uid="uid://dllefuwsvhtki" path="res://Room/room.tscn" id="1_yh5la"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_yh5la"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_2w1kt"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_yh5la"]
+[sub_resource type="BoxMesh" id="BoxMesh_2w1kt"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_yh5la"]
+[sub_resource type="PrismMesh" id="PrismMesh_2w1kt"]
 
 [node name="Main" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_2w1kt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.05063, 3.77379, -0.222149)
 
-[node name="Room" parent="." instance=ExtResource("1_yh5la")]
+[node name="M" parent="." node_paths=PackedStringArray("left_room", "right_room") instance=ExtResource("1_yh5la")]
+left_room = NodePath("../L")
+right_room = NodePath("../R")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 0)
-mesh = SubResource("BoxMesh_yh5la")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="M"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65578, 2.6211, 2.60674)
+mesh = SubResource("CylinderMesh_2w1kt")
 
-[node name="Room3" parent="." instance=ExtResource("1_yh5la")]
+[node name="L" parent="." node_paths=PackedStringArray("left_room", "right_room") instance=ExtResource("1_yh5la")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)
+left_room = NodePath("../R")
+right_room = NodePath("../M")
+enabled = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 0)
-mesh = SubResource("SphereMesh_yh5la")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="L"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41446, 2.21854, -4.07204)
+mesh = SubResource("BoxMesh_2w1kt")
 
-[node name="Room2" parent="." instance=ExtResource("1_yh5la")]
+[node name="R" parent="." node_paths=PackedStringArray("left_room", "right_room") instance=ExtResource("1_yh5la")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17)
+left_room = NodePath("../M")
+right_room = NodePath("../L")
+enabled = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.98656, 1.9946, -0.0152321)
-mesh = SubResource("PrismMesh_yh5la")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="R"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88235, 1.87136, 0)
+mesh = SubResource("PrismMesh_2w1kt")
